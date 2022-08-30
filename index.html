@@ -1,1 +1,69 @@
-Hello WongSilver
+<!DOCTYPE html>
+<html>
+<head>
+<title>rain--滴答滴答下雨啦</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="author" content="Thilina Fong" />
+<meta name="description" content="" />
+<style>
+html,body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#container{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#mycanvas{
+	background: #EEE;
+}
+</style>
+</head>
+<body>
+<div id="container">
+  <canvas id="mycanvas">15816277995</canvas>
+</div>
+<script src="jCanvaScript.js"></script>
+<script>
+window.onload=function(){
+  var numWkpx1=document.documentElement.clientWidth || document.body.clientWidth;
+  var numHkpx1=document.documentElement.clientHeight || document.body.clientHeight;
+  // var eleContainer=document.getElementById('container');
+  // var numW=window.getComputedStyle(eleContainer,null).width;
+  // var numH=window.getComputedStyle(eleContainer,null).height;
+  var eleMyCanvas=document.getElementById('mycanvas');
+  eleMyCanvas.setAttribute('width',numWkpx1);
+  eleMyCanvas.setAttribute('height',numHkpx1);
+
+	jc.start('mycanvas',true);
+	window.setInterval(function(){
+		rain(numWkpx1,numHkpx1);
+	},200);
+// jc.start('mycanvas',true);
+};
+
+//==========functions
+function rain(numW,numH){
+	var r = Math.floor(Math.random() * (254)),
+			g = Math.floor(Math.random() * (254)),
+			b = Math.floor(Math.random() * (254)),
+			x = Math.floor(Math.random() * (numW-10)+10),
+			y = Math.floor(Math.random() * (numH-10)+10),
+			color = "rgba("+r+", "+g+", "+b+", 0.33)",
+			filled = true,
+			radius = 1;
+			jc.circle(x, y, radius, color, filled).animate({radius:100, opacity:0}, 1500, function(){
+					this.del();
+			});
+}	//end functions
+
+</script>
+</body>
+</html>
