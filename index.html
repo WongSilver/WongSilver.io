@@ -56,7 +56,7 @@
       // 加载地图数据
       loadMapData() {
         const loader = new THREE.FileLoader()
-        loader.load('../json/china.json', (data) => {
+        loader.load('china.json', (data) => {
           const jsondata = JSON.parse(data)
           this.generateGeometry(jsondata)
         })
